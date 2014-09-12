@@ -1,0 +1,1 @@
+console.log("please provide --path to challenge");

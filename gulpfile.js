@@ -10,5 +10,11 @@ gulp.task('watch', ['execute'], function () {
 });
 
 gulp.task('execute', function () {
+    var relpath = '/Users/gaya/Workspace/challenges/' + path + '/index.js';
+
+    if (require.cache[relpath]){
+        delete require.cache[relpath];
+    }
+
     require('./' + path + '/index.js');
 });

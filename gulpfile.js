@@ -10,7 +10,7 @@ gulp.task('watch', ['execute'], function () {
 });
 
 gulp.task('execute', function () {
-    var relpath = '/Users/gaya/Workspace/challenges/' + path + '/index.js';
+    var relpath = __dirname + '/' + path + '/index.js';
 
     if (require.cache[relpath]){
         delete require.cache[relpath];

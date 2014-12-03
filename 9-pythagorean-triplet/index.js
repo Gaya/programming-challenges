@@ -12,12 +12,29 @@
 
 var outcome = 1000;
 
-sumOfPytha(56, 33);
+var max = 100;
+var a = 2;
+var b = 1;
+
+while (b <= max) {
+    sumOfPytha(a, b);
+
+    if (a < max) {
+        a++;
+    } else {
+        b++;
+        a = b + 1;
+    }
+}
 
 function sumOfPytha(a, b) {
     var s = euclid(a, b);
     var c = pytha(s.a, s.b);
-    console.log(s.a, s.b, c, (s.a + s.b + c));
+
+    if ((s.a + s.b + c) === outcome) {
+        console.log(s.a, s.b, c, (s.a + s.b + c));
+        console.log("Product is: " + (s.a * s.b * c));
+    }
 }
 
 function exp(input) {

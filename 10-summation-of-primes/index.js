@@ -20,10 +20,8 @@ function isPrime(number) {
 
     var q = Math.sqrt(number);
 
-    for (var i = 2; i <= q; i++)
-    {
-        if (number % i == 0)
-        {
+    for (var i = 2; i <= q; i++) {
+        if (number % i == 0) {
             return false;
         }
     }

@@ -17,3 +17,36 @@
 
  What is the value of the first triangle number to have over five hundred divisors?
  */
+
+var max = 30;
+var maxdiversions = 500;
+var total = 0;
+var solution = 0;
+var i = 1;
+var check = 1;
+var current = 1;
+
+while (solution == 0) {
+    total += i;
+    i++;
+
+    if (i % 2 == 0 && check <= total) {
+        var found = 1;
+        for (var j = total / 2; j > 0; j--) {
+            if (total % j === 0) {
+                found++;
+            }
+        }
+
+        if (found > current) {
+            current = found;
+            console.log(current);
+        }
+
+        if (found > maxdiversions) {
+            solution = total;
+        }
+    }
+}
+
+console.log(solution);

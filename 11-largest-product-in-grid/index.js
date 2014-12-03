@@ -52,10 +52,51 @@ var grid = [
 var x = 0, y = 0;
 var highest = 0;
 var max = 20;
+var colsLength = 4;
 
 while (y < 20) {
-    //do stuff
-    console.log(grid[y][x]);
+    var hor = false, vert = false, product = 1, i = 0;
+    if ((x + colsLength) <= max) {
+        //horizontal check
+        hor = true;
+        product = 1;
+
+        for (i = 0; i < colsLength; i++) {
+            product = product * grid[y][(x + i)];
+        }
+
+        if (product > highest) {
+            highest = product;
+        }
+    }
+
+    if ((y + colsLength) <= max) {
+        //vertical check
+        vert = true;
+        product = 1;
+
+        for (i = 0; i < colsLength; i++) {
+            product = product * grid[(y + i)][x];
+        }
+
+        if (product > highest) {
+            highest = product;
+        }
+    }
+
+    if (hor && vert) {
+        //diagonal
+        product = 1;
+
+        for (i = 0; i < colsLength; i++) {
+            product = product * grid[(y + i)][(x + i)];
+        }
+
+        if (product > highest) {
+            highest = product;
+        }
+    }
+
 
     x++;
     if (x === max) {
@@ -64,3 +105,5 @@ while (y < 20) {
         //go to next row
     }
 }
+
+console.log(highest);

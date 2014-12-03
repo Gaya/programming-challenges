@@ -97,6 +97,17 @@ while (y < 20) {
         }
     }
 
+    if (vert && (x - colsLength) >= 0) {
+        product = 1;
+
+        for (i = 0; i < colsLength; i++) {
+            product = product * grid[(y + i)][(x - i)];
+        }
+
+        if (product > highest) {
+            highest = product;
+        }
+    }
 
     x++;
     if (x === max) {

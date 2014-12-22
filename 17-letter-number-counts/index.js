@@ -71,7 +71,9 @@ for (var i = 1; i <= 1000; i++) {
         }
     }
 
-    console.log(number);
+    var count = number.match(/[a-z]/gi);
+
+    console.log(number + " (" + (count.length) + ")");
 }
 
 function popDigits(input, length) {

@@ -30,15 +30,17 @@ var numberStrings = {
     19: "nineteen",
     20: "twenty",
     30: "thirty",
-    40: "fourty",
+    40: "forty",
     50: "fifty",
     60: "sixty",
     70: "seventy",
     80: "eighty",
     90: "ninety",
-    100: "hunderd",
+    100: "hundred",
     1000: "thousand"
 };
+
+var sum = 0;
 
 for (var i = 1; i <= 1000; i++) {
     var number = "";
@@ -72,9 +74,12 @@ for (var i = 1; i <= 1000; i++) {
     }
 
     var count = number.match(/[a-z]/gi);
+    sum += count.length;
 
     console.log(number + " (" + (count.length) + ")");
 }
+
+console.log("total letters used: " + sum);
 
 function popDigits(input, length) {
     var number = input.toString();

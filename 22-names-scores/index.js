@@ -17,6 +17,8 @@ fs.readFile(path.resolve(__dirname, 'names.txt'), (err, data) => {
     return console.error(err);
   }
 
+  const hrstart = process.hrtime();
+
   const total = data
     .toString()
     .replace(/"/g, '')
@@ -36,5 +38,8 @@ fs.readFile(path.resolve(__dirname, 'names.txt'), (err, data) => {
       0,
     );
 
-  console.log(total);
+  const hrend = process.hrtime(hrstart);
+
+  console.info('Answer is ' + total);
+  console.info('Execution time (hr): %ds %dms', hrend[0], hrend[1] / 1000000)
 });

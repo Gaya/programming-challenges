@@ -9,41 +9,32 @@
  What is the total of all the name scores in the file?
  */
 
-var fs = require('fs');
+const fs = require('fs');
+const path = require('path');
 
-fs.readFile('./22-names-scores/names.txt', (err, data) => {
+fs.readFile(path.resolve(__dirname, 'names.txt'), (err, data) => {
   if (err) {
     return console.error(err);
   }
 
-  var names = namesStringToArray(data.toString());
-  var total = 0;
-
-  names.forEach((name, index) => {
-    var nrName = (index + 1);
-    var letters = name.split('');
-    var score = calcNameScore(letters);
-
-    total = total + (score * nrName);
-  });
+  const total = data
+    .toString()
+    .replace(/"/g, '')
+    .split(',')
+    .sort()
+    .reduce(
+      (acc, name, index) =>
+        acc + (
+          name
+            .split('')
+            .reduce(
+              (acc, letter) => acc + (letter.charCodeAt(0) - 64),
+              0,
+            )
+          * (index + 1)
+        ),
+      0,
+    );
 
   console.log(total);
 });
-
-function namesStringToArray(names) {
-  return names.replace(/\"/g, '').split(',').sort();
-}
-
-function calcNameScore(letters) {
-  var score = 0;
-
-  letters.forEach((letter) => {
-    score += calcLetterScore(letter);
-  });
-
-  return score;
-}
-
-function calcLetterScore(letter) {
-  return letter.charCodeAt() - 64;
-}

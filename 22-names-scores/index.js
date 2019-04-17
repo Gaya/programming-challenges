@@ -25,18 +25,12 @@ fs.readFile(path.resolve(__dirname, 'names.txt'), (err, data) => {
     .split(',')
     .sort()
     .reduce(
-      (acc, name, index) =>
-        acc + (
-          name
-            .split('')
-            .reduce(
-              (acc, letter) => acc + (letter.charCodeAt(0) - 64),
-              0,
-            )
+      (acc, name, index) => acc + (
+        name
+          .split('')
+          .reduce((acc, letter) => acc + (letter.charCodeAt(0) - 64), 0)
           * (index + 1)
-        ),
-      0,
-    );
+      ), 0);
 
   const hrend = process.hrtime(hrstart);
 
